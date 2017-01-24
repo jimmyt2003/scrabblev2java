@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Scrabble Club</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Scrabble club players</h1>
+    <div th:replace="fragments/links :: links">...</div>
+    <p>Players</p>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Telephone No</th>
+        </tr>
+        <tr th:each="player : ${playerList}">
+            <td th:text="${player.id}">8</td>
+            <td th:text="${player.name}">hkg</td>
+            <td th:text="${player.telephone}">8797</td>
+            <td><a th:href="@{/player/{id}(id=${player.id})}">View Profile</a></td>
+        </tr>
+    </table>
+
+</body>
+</html>

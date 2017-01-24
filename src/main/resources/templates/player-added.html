@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Scrabble Club</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Player Added</h1>
+    <div th:replace="fragments/links :: links">...</div>
+
+    <!--<p th:text="'id: ' + ${player.id}" />-->
+    <p th:text="'name: ' + ${player.name}" />
+    <p th:text="'Telephone Number: ' + ${player.telephone}" />
+    <a href="/">Home</a>
+</body>
+</html>

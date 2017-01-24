@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Scrabble Club</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1 th:text="'Profile of: ' + ${player.name}">Player Added</h1>
+    <div th:replace="fragments/links :: links">...</div>
+
+    <p th:text="'name: ' + ${player.name}" />
+    <p th:text="'Telephone Number: ' + ${player.telephone}" />
+
+    todo
+    - number of wins
+    – number of losses
+    – their average score
+    – highest score
+    <a href="/">Home</a>
+</body>
+</html>
