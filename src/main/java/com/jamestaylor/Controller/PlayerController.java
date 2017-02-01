@@ -16,7 +16,7 @@ import java.util.Collection;
 public class PlayerController {
 
     @Autowired
-    PlayerService playerService;
+    private PlayerService playerService;
 
     @GetMapping("/players")
     public ModelAndView allPlayers() {

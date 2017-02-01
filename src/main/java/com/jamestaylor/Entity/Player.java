@@ -1,28 +1,26 @@
 package com.jamestaylor.Entity;
 
-
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 public class Player {
 
+    @Id
+    @GeneratedValue
     private Long id;
     private String name;
     private String telephone;
-    private Set<MatchPlayer> matchPlayers;
+    private List<MatchPlayer> matchPlayers;
 
     protected Player() {}
 
     public Player(String name, String telephone) {
         this.name = name;
         this.telephone = telephone;
-        matchPlayers = new HashSet<>();
     }
 
-    @Id
-    @GeneratedValue
+
     public Long getId() {
         return id;
     }
@@ -48,11 +46,11 @@ public class Player {
     }
 
     @OneToMany(mappedBy = "player")
-    public Set<MatchPlayer> getMatchPlayers() {
+    public List<MatchPlayer> getMatchPlayers() {
         return matchPlayers;
     }
 
-    public void setMatchPlayers(Set<MatchPlayer> matchPlayers) {
+    public void setMatchPlayers(List<MatchPlayer> matchPlayers) {
         this.matchPlayers = matchPlayers;
     }
 
@@ -62,6 +60,7 @@ public class Player {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", telephone='" + telephone + '\'' +
+                ", matchPlayers=" + matchPlayers +
                 '}';
     }
 }

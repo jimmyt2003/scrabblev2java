@@ -4,15 +4,29 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(name = "match_player")
 public class MatchPlayer implements Serializable {
 
+    @Id
+    @GeneratedValue
+    private Long id;
     private Match match;
     private Player player;
     private Integer score;
 
+    protected MatchPlayer() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Id
     @ManyToOne
-    @JoinColumn(name = "match_id")
+    @JoinColumn(name = "match.id")
     public Match getMatch() {
         return match;
     }
@@ -27,7 +41,7 @@ public class MatchPlayer implements Serializable {
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "player_id")
+    @JoinColumn(name = "player.id")
     public void setPlayer(Player player) {
         this.player = player;
     }

@@ -2,25 +2,24 @@ package com.jamestaylor.Entity;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Entity
+@Table(name = "matches")
 public class Match {
 
+    @Id
+    @GeneratedValue
     private Long id;
     private Date matchDate;
-    private Set<MatchPlayer> matchPlayers;
+    private List<MatchPlayer> matchPlayers;
 
     protected Match() {}
 
     public Match(Date matchDate) {
         this.matchDate = matchDate;
-        matchPlayers = new HashSet<>();
     }
 
-    @Id
-    @GeneratedValue
     public Long getId() {
         return id;
     }
@@ -38,11 +37,20 @@ public class Match {
     }
 
     @OneToMany(mappedBy = "match")
-    public Set<MatchPlayer> getMatchPlayers() {
+    public List<MatchPlayer> getMatchPlayers() {
         return matchPlayers;
     }
 
-    public void setMatchPlayers(Set<MatchPlayer> matchPlayers) {
+    public void setMatchPlayers(List<MatchPlayer> matchPlayers) {
         this.matchPlayers = matchPlayers;
+    }
+
+    @Override
+    public String toString() {
+        return "Match{" +
+                "id=" + id +
+                ", matchDate=" + matchDate +
+                ", matchPlayers=" + matchPlayers +
+                '}';
     }
 }
