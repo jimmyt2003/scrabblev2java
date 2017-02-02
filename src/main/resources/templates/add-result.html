@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Scrabble Club</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Add Result to match - <span th:text="${match.matchDate}">Date</span></h1>
+<div th:replace="fragments/links :: links">...</div>
+
+<form action="#" th:action="@{/add-result/{id}(id=${match.id})}" th:object="${player}" method="post">
+    <p>
+        Player 1
+        <select th:field="*{id}">
+            <option th:each="player : ${playerList}" th:value="${player.id}" th:text="${player.name}"/>
+        </select>
+
+        Score
+        <!--<input th:field="*{score}"/>-->
+    </p>
+
+    <p><input type="submit" value="Submit" /> </p>
+</form>
+
+</body>
+</html>
