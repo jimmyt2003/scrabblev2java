@@ -11,15 +11,17 @@ public class Player {
     private Long id;
     private String name;
     private String telephone;
+
+    @OneToMany(targetEntity = MatchPlayer.class, fetch = FetchType.EAGER)
     private List<MatchPlayer> matchPlayers;
 
     protected Player() {}
 
-    public Player(String name, String telephone) {
+    public Player(String name, String telephone, List<MatchPlayer> matchPlayers) {
         this.name = name;
         this.telephone = telephone;
+        this.matchPlayers = matchPlayers;
     }
-
 
     public Long getId() {
         return id;
@@ -45,22 +47,11 @@ public class Player {
         this.telephone = telephone;
     }
 
-    @OneToMany(mappedBy = "player")
     public List<MatchPlayer> getMatchPlayers() {
         return matchPlayers;
     }
 
     public void setMatchPlayers(List<MatchPlayer> matchPlayers) {
         this.matchPlayers = matchPlayers;
-    }
-
-    @Override
-    public String toString() {
-        return "Player{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", matchPlayers=" + matchPlayers +
-                '}';
     }
 }

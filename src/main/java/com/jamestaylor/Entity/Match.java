@@ -1,5 +1,7 @@
 package com.jamestaylor.Entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -11,14 +13,14 @@ public class Match {
     @Id
     @GeneratedValue
     private Long id;
+
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date matchDate;
+
+    @OneToMany(targetEntity = MatchPlayer.class, fetch = FetchType.EAGER)
     private List<MatchPlayer> matchPlayers;
 
     protected Match() {}
-
-    public Match(Date matchDate) {
-        this.matchDate = matchDate;
-    }
 
     public Long getId() {
         return id;
@@ -36,21 +38,11 @@ public class Match {
         this.matchDate = matchDate;
     }
 
-    @OneToMany(mappedBy = "match")
     public List<MatchPlayer> getMatchPlayers() {
         return matchPlayers;
     }
 
     public void setMatchPlayers(List<MatchPlayer> matchPlayers) {
         this.matchPlayers = matchPlayers;
-    }
-
-    @Override
-    public String toString() {
-        return "Match{" +
-                "id=" + id +
-                ", matchDate=" + matchDate +
-                ", matchPlayers=" + matchPlayers +
-                '}';
     }
 }
