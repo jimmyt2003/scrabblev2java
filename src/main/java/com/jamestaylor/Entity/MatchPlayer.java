@@ -11,11 +11,11 @@ public class MatchPlayer implements Serializable {
     private Long id;
 
     @ManyToOne(targetEntity = Match.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "match_id")
+//    @JoinColumn(name = "match_id")
     private Match match;
 
     @ManyToOne(targetEntity = Player.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "player_id")
+//    @JoinColumn(name = "player_id")
     private Player player;
     private Integer score;
 
